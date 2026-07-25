@@ -1,0 +1,8 @@
+{
+  "name": "Ai Designer",
+  "description": "A retro-inspired virtual closet and try-on experience with weather-based style tips.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
