@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { STUDENT_WORKS, COURSE_STATS, GOOGLE_FORM_URL, CONTACT_INFO, IMAGES } from '../constants';
 import { StudentWork } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 import { Sparkles, Eye, Zap, Copy, Check, Filter, Play, Volume2, VolumeX, Film, Users, Award, TrendingUp, ArrowUpRight, Youtube } from 'lucide-react';
 
 interface GalleryProps {
@@ -10,6 +11,7 @@ interface GalleryProps {
 export const Gallery: React.FC<GalleryProps> = ({ onOpenLightbox }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Barchasi');
   const [copiedId, setCopiedId] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   // Video Player States
   const [isPlayingVideo1, setIsPlayingVideo1] = useState(false);
@@ -41,13 +43,13 @@ export const Gallery: React.FC<GalleryProps> = ({ onOpenLightbox }) => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-            <span>Talabalar Ishlari va Natijalar</span>
+            <span>{t('galleryBadge')}</span>
           </div>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900">
-            100+ Shogirdlarimizning <span className="text-gradient-primary">AI Natijalari</span>
+            {t('galleryTitle')}
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
-            Noldan boshlagan o'quvchilarimiz Midjourney v6, Adobe Firefly va Canva AI yordamida yaratgan real tijoriy ishlari va video reklamalari.
+            {t('gallerySub')}
           </p>
         </div>
 
@@ -369,7 +371,7 @@ export const Gallery: React.FC<GalleryProps> = ({ onOpenLightbox }) => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-xl shadow-purple-600/30 group"
           >
-            <span>Shunday Natijalarga Erishish Uchun Ro'yxatdan O'ting</span>
+            <span>{t('register')}</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>

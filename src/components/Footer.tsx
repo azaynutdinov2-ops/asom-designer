@@ -1,8 +1,11 @@
 import React from 'react';
 import { Sparkles, Send, Instagram, Youtube, Globe, ArrowUpRight, Heart } from 'lucide-react';
 import { GOOGLE_FORM_URL } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-slate-900 border-t border-slate-800 pt-16 pb-8 text-slate-400 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -24,7 +27,7 @@ export const Footer: React.FC = () => {
             </a>
 
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              Grafik dizaynni sun'iy intellekt (Midjourney, Adobe Firefly, Canva AI) vositalari yordamida eng yuqori darajada o'rgatuvchi zamonaviy onlayn ta'lim platformasi.
+              {t('footerBrandDesc')}
             </p>
 
             {/* Social Icons */}
@@ -71,26 +74,26 @@ export const Footer: React.FC = () => {
           {/* Quick Links Column */}
           <div className="space-y-3">
             <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
-              Bo'limlar
+              {t('footerColSections')}
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#about" className="hover:text-purple-400 transition-colors">Kurs Haqida</a></li>
-              <li><a href="#modules" className="hover:text-purple-400 transition-colors">Dastur & Modullar</a></li>
-              <li><a href="#why-us" className="hover:text-purple-400 transition-colors">Afzalliklar</a></li>
-              <li><a href="#mentor" className="hover:text-purple-400 transition-colors">Mentor</a></li>
-              <li><a href="#gallery" className="hover:text-purple-400 transition-colors">Talabalar Ishlari</a></li>
+              <li><a href="#about" className="hover:text-purple-400 transition-colors">{t('navAbout')}</a></li>
+              <li><a href="#modules" className="hover:text-purple-400 transition-colors">{t('navProgram')}</a></li>
+              <li><a href="#why-us" className="hover:text-purple-400 transition-colors">{t('navBenefits')}</a></li>
+              <li><a href="#mentor" className="hover:text-purple-400 transition-colors">{t('navMentor')}</a></li>
+              <li><a href="#gallery" className="hover:text-purple-400 transition-colors">{t('navGallery')}</a></li>
             </ul>
           </div>
 
           {/* Tariflar & Registration */}
           <div className="space-y-3">
             <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
-              Ro'yxatdan O'tish
+              {t('footerColRegistration')}
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">Start Tarifi</a></li>
-              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">Pro (Premium) Tarifi</a></li>
-              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">VIP Mentorship</a></li>
+              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanStart')}</a></li>
+              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanPro')}</a></li>
+              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanVip')}</a></li>
               <li>
                 <a
                   href={GOOGLE_FORM_URL}
@@ -98,7 +101,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-purple-400 font-semibold hover:underline flex items-center gap-1 mt-1"
                 >
-                  <span>Google Form Havolasi</span>
+                  <span>Google Form</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </a>
               </li>
@@ -108,13 +111,13 @@ export const Footer: React.FC = () => {
           {/* Contact Info */}
           <div className="space-y-3">
             <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
-              Aloqa
+              {t('footerColContact')}
             </h4>
             <div className="space-y-2 text-xs text-slate-400">
               <p>📍 Toshkent shahri, IT-Park</p>
               <p>📞 +998 (99) 807-62-75</p>
               <p>✉️ @asom_uz (Telegram)</p>
-              <p>🕒 Ish vaqti: 09:00 - 20:00 (Hamma kun)</p>
+              <p>🕒 {t('footerWorkHours')}</p>
             </div>
           </div>
 
@@ -122,9 +125,9 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Copyright */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
-          <p>© {new Date().getFullYear()} AI DESIGN PRO. Barcha huquqlar himoyalangan.</p>
+          <p>© {new Date().getFullYear()} AI DESIGN PRO. {t('footerRights')}</p>
           <p className="flex items-center gap-1">
-            <span>Mehr bilan tayyorlandi</span> <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
+            <span>{t('footerMadeWith')}</span> <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
           </p>
         </div>
 
@@ -132,3 +135,4 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+

@@ -1,0 +1,341 @@
+export type Language = 'uz' | 'ru' | 'en';
+
+export const translations = {
+  uz: {
+    // Announcement & Header
+    newBatch: "Yangi Guruh",
+    seatsLeft: "Chegirmali ro'yxatdan o'tish yopilishiga atigi 7 ta joy qoldi!",
+    reserveSeat: "Joyingizni band qiling",
+    register: "Ro'yxatdan o'tish",
+    brandSub: "Grafik Dizayn & AI Kurslari",
+    
+    // Nav Links
+    navCourse: "Kurs Haqida",
+    navProgram: "Dastur",
+    navWhyUs: "Afzalliklar",
+    navMentor: "Mentor",
+    navGallery: "Bitiruvchilar Ishlari",
+    navPricing: "Tariflar",
+    navFAQ: "FAQ",
+    navContact: "Bog'lanish",
+
+    // Hero Section
+    heroBadge: "Sun'iy Intellekt Bilan Zamonaviy Grafik Dizayn Kursi",
+    heroTitleLine1: "Grafik dizaynni",
+    heroTitleAi: "Sun'iy Intellekt (AI)",
+    heroTitleLine2: "yordamida o'rganing",
+    heroSubText: "Midjourney v6, Adobe Firefly, Canva AI va ChatGPT 4o yordamida dizayn yaratish tezligingizni 10 barobar oshiring va xalqaro frilans bozorida daromad toping.",
+    heroB1: "100% Amaliyot va 5+ real portfolio loyihasi",
+    heroB2: "500+ Tayyor AI Promptlar bazasi sovg'a",
+    heroB3: "Xalqaro Sertifikat va shtrix-kod",
+    heroB4: "24/7 Mentor yordami va shaxsiy feedback",
+    heroRegisterBtn: "Ro'yxatdan O'tish",
+    heroViewProgramBtn: "Dasturni Ko'rish",
+    heroTrustSignal: "Google Forms orqali tezkor va xavfsiz ro'yxatdan o'ting",
+    heroPromptCopy: "Promptni nusxalash",
+    heroPromptCopied: "Nusxalandi!",
+    heroRenderTime: "Generatsiya vaqti:",
+    heroTimeVal: "12 soniya",
+    heroStat1Val: "10x",
+    heroStat1Label: "Dizayn Tezligi",
+    heroStat1Badge: "AI texnologiyalari bilan",
+    heroStat2Val: "500+",
+    heroStat2Label: "Muvaffaqiyatli Bitiruvchi",
+    heroStat2Badge: "Sertifikatli mutaxassislar",
+    heroStat3Val: "$800+",
+    heroStat3Label: "O'rtacha Oylik Daromad",
+    heroStat3Badge: "Frilans va studiyalarda",
+    heroStat4Val: "100%",
+    heroStat4Label: "Amaliyot va Portfolio",
+    heroStat4Badge: "Tayyor ishlar bilan",
+
+    // Mentor
+    mentorBadge: "Kurs Mentori va Muallifi",
+    mentorTitle: "Asom Designer (@Asom.teacher)",
+    mentorSub: "7 yillik tajribaga ega yetakchi AI Grafik Dizayner va kontent meykari",
+    mentorBio: "Graphic design, AI visual creation, 3D Anamorphic billboard reklamalari va motion graphics bo'yicha mutaxassis. Xalqaro brendlar va mahalliy yirik kompaniyalar uchun yuzlab muvaffaqiyatli dizayn loyihalarini amalga oshirgan.",
+    mentorExp: "7+ Yillik Tajriba",
+    mentorStudents: "1200+ Shogirdlar",
+    mentorYoutubeBtn: "YouTube Kanal: @Asom.teacher",
+    mentorRegisterBtn: "Mentordan O'rganish Uchun Ro'yxatdan O'tish",
+
+    // Gallery / Works
+    galleryBadge: "Amaliy Natijalar & Portfolio",
+    galleryTitle: "Bitiruvchilar va Mentor Ishlari",
+    gallerySub: "Sun'iy intellekt va zamonaviy grafik dizayn vositalari yordamida yaratilgan real tijoriy loyihalar.",
+    galleryFilterAll: "Barchasi",
+    galleryFilter3D: "3D & Motion VFX",
+    galleryFilterBrand: "Brending",
+    galleryFilterSMM: "SMM Bannerlar",
+    galleryFilterLogo: "Logotiplar",
+    galleryMentorWork: "Mentor Asom Designer Ishi: Times Square 3D Billboard",
+    galleryViewPrompt: "Prompt va Tafsilotlar",
+
+    // Modules / Program
+    modulesBadge: "To'liq O'quv Dasturi",
+    modulesTitle: "6 Ta Keng Qamrovli Modul",
+    modulesSub: "Noldan professional darajagacha bo'lgan mukammal o'quv yo'li.",
+    modulesLessons: "dars",
+    modulesProject: "Modul Loyihasi:",
+    modulesTools: "Ishlatiladigan Dasturlar:",
+
+    // Why Us
+    whyUsBadge: "Nima Uchun Biz?",
+    whyUsTitle: "Nega Aynan Ushbu Kursni Tanlashingiz Kerak?",
+    whyUsSub: "An'anaviy qiyin dizayn usullaridan farqli o'laroq, AI sizga cheksiz imkoniyatlar eshigini ochadi.",
+
+    // Playground
+    playgroundBadge: "AI Prompt Laboratoriyasi",
+    playgroundTitle: "AI Promptlarni Sinab Ko'ring",
+    playgroundSub: "Midjourney va DALL-E uchun tayyor mukammal prompt namunalarini o'rganing va nusxalab oling.",
+
+    // Pricing
+    pricingBadge: "Qulay Tariflar",
+    pricingTitle: "O'zingizga Mos Tarifni Tanlang",
+    pricingSub: "Barcha tariflarda mentor qo'llab-quvvatlovi va amaliy portfolio kafolatlanadi.",
+    pricingSelectBtn: "Ushbu Tarifni Tanlash",
+    pricingPopular: "Eng Ommabop Choice",
+
+    // FAQ
+    faqBadge: "Kop Beriladigan Savollar",
+    faqTitle: "Savollaringizga Javoblar",
+    faqSub: "Kurs bo'yicha eng ko'p beriladigan savollar va batafsil javoblar.",
+
+    // CTA & Contact
+    ctaBadge: "Ro'yxatdan O'tish",
+    ctaTitle: "O'z Kelajagingizni AI Dizayn Bilan Quring!",
+    ctaSub: "Joylar soni chegaralangan. Hoziroq Google Form orqali arizangizni qoldiring va bepul AI Promptlar to'plamini qo'lga kiriting.",
+    phoneLabel: "Telefon:",
+    telegramLabel: "Telegram:",
+    youtubeLabel: "YouTube:",
+
+    // Footer
+    footerRights: "Barcha huquqlar himoyalangan.",
+  },
+
+  ru: {
+    // Announcement & Header
+    newBatch: "Новая Группа",
+    seatsLeft: "Осталось всего 7 мест для регистрации со скидкой!",
+    reserveSeat: "Забронировать место",
+    register: "Зарегистрироваться",
+    brandSub: "Графический Дизайн и AI Курсы",
+
+    // Nav Links
+    navCourse: "О Курсе",
+    navProgram: "Программа",
+    navWhyUs: "Преимущества",
+    navMentor: "Ментор",
+    navGallery: "Работы Выпускников",
+    navPricing: "Тарифы",
+    navFAQ: "FAQ",
+    navContact: "Контакты",
+
+    // Hero Section
+    heroBadge: "Курс Современного Графического Дизайна с ИИ",
+    heroTitleLine1: "Изучайте графический дизайн",
+    heroTitleAi: "Искусственный Интеллект (AI)",
+    heroTitleLine2: "с помощью нейросетей",
+    heroSubText: "Увеличьте скорость создания дизайна в 10 раз с Midjourney v6, Adobe Firefly, Canva AI и ChatGPT 4o и зарабатывайте на международном фрилансе.",
+    heroB1: "100% Практика и 5+ реальных проектов в портфолио",
+    heroB2: "500+ Готовых AI Промптов в подарок",
+    heroB3: "Международный Сертификат со штрих-кодом",
+    heroB4: "Поддержка Ментора 24/7 и личный фидбек",
+    heroRegisterBtn: "Зарегистрироваться",
+    heroViewProgramBtn: "Смотреть Программу",
+    heroTrustSignal: "Быстрая и безопасная регистрация через Google Forms",
+    heroPromptCopy: "Копировать промпт",
+    heroPromptCopied: "Скопировано!",
+    heroRenderTime: "Время генерации:",
+    heroTimeVal: "12 секунд",
+    heroStat1Val: "10x",
+    heroStat1Label: "Скорость Дизайна",
+    heroStat1Badge: "Благодаря AI технологиям",
+    heroStat2Val: "500+",
+    heroStat2Label: "Успешных Выпускников",
+    heroStat2Badge: "Сертифицированные специалисты",
+    heroStat3Val: "$800+",
+    heroStat3Label: "Средний Доход в Месяц",
+    heroStat3Badge: "На фрилансе и в студиях",
+    heroStat4Val: "100%",
+    heroStat4Label: "Практика и Портфолио",
+    heroStat4Badge: "С готовыми кейсами",
+
+    // Mentor
+    mentorBadge: "Автор и Ментор Курса",
+    mentorTitle: "Asom Designer (@Asom.teacher)",
+    mentorSub: "Ведущий AI Графический Дизайнер с 7-летним опытом и контент-мейкер",
+    mentorBio: "Эксперт по графическому дизайну, генеративному ИИ, 3D Anamorphic рекламе и моушн-дизайну. Реализовал сотни успешных проектов для международных и локальных брендов.",
+    mentorExp: "7+ Лет Опыта",
+    mentorStudents: "1200+ Учеников",
+    mentorYoutubeBtn: "YouTube Канал: @Asom.teacher",
+    mentorRegisterBtn: "Записаться на Обучение к Ментору",
+
+    // Gallery / Works
+    galleryBadge: "Практические Результаты & Портфолио",
+    galleryTitle: "Работы Выпускников и Ментора",
+    gallerySub: "Реальные коммерческие проекты, созданные с помощью ИИ и современных графических инструментов.",
+    galleryFilterAll: "Все",
+    galleryFilter3D: "3D & Motion VFX",
+    galleryFilterBrand: "Брендинг",
+    galleryFilterSMM: "SMM Баннеры",
+    galleryFilterLogo: "Логотипы",
+    galleryMentorWork: "Работа Ментора Asom Designer: 3D Билборд на Таймс-Сквер",
+    galleryViewPrompt: "Промпт и Детали",
+
+    // Modules / Program
+    modulesBadge: "Полная Учебная Программа",
+    modulesTitle: "6 Комплексных Модулей",
+    modulesSub: "Пошаговый путь обучения от нуля до профессионального уровня.",
+    modulesLessons: "уроков",
+    modulesProject: "Проект Модуля:",
+    modulesTools: "Используемые Инструменты:",
+
+    // Why Us
+    whyUsBadge: "Почему Мы?",
+    whyUsTitle: "Почему Стоит Выбрать Именно Этот Курс?",
+    whyUsSub: "В отличие от традиционных сложных методов, AI открывает вам двери в безграничное творчество.",
+
+    // Playground
+    playgroundBadge: "Лаборатория AI Промптов",
+    playgroundTitle: "Попробуйте AI Промпты",
+    playgroundSub: "Изучите и скопируйте готовые идеальные образцы промптов для Midjourney и DALL-E.",
+
+    // Pricing
+    pricingBadge: "Удобные Тарифы",
+    pricingTitle: "Выберите Подходящий Тариф",
+    pricingSub: "На всех тарифах гарантируется поддержка ментора и практическое портфолио.",
+    pricingSelectBtn: "Выбрать Этот Тариф",
+    pricingPopular: "Самый Популярный Выбор",
+
+    // FAQ
+    faqBadge: "Часто Задаваемые Вопросы",
+    faqTitle: "Ответы на Ваши Вопросы",
+    faqSub: "Самые популярные вопросы о курсе и подробные ответы.",
+
+    // CTA & Contact
+    ctaBadge: "Регистрация",
+    ctaTitle: "Постройте Свое Будущее с AI Дизайном!",
+    ctaSub: "Количество мест ограничено. Оставьте заявку через Google Form прямо сейчас и получите набор AI промптов в подарок.",
+    phoneLabel: "Телефон:",
+    telegramLabel: "Telegram:",
+    youtubeLabel: "YouTube:",
+
+    // Footer
+    footerRights: "Все права защищены.",
+  },
+
+  en: {
+    // Announcement & Header
+    newBatch: "New Cohort",
+    seatsLeft: "Only 7 discounted spots left for registration!",
+    reserveSeat: "Reserve Your Spot",
+    register: "Register Now",
+    brandSub: "Graphic Design & AI Courses",
+
+    // Nav Links
+    navCourse: "About Course",
+    navProgram: "Curriculum",
+    navWhyUs: "Why Us",
+    navMentor: "Mentor",
+    navGallery: "Student Works",
+    navPricing: "Pricing",
+    navFAQ: "FAQ",
+    navContact: "Contact",
+
+    // Hero Section
+    heroBadge: "Modern Graphic Design Course Powered by AI",
+    heroTitleLine1: "Master Graphic Design with",
+    heroTitleAi: "Artificial Intelligence (AI)",
+    heroTitleLine2: "and Neural Networks",
+    heroSubText: "Accelerate your design workflow by 10x using Midjourney v6, Adobe Firefly, Canva AI, and ChatGPT 4o, and earn on the global freelance market.",
+    heroB1: "100% Hands-on Practice with 5+ real portfolio projects",
+    heroB2: "500+ Ready-to-use AI Prompts Library included",
+    heroB3: "International Certificate with QR code",
+    heroB4: "24/7 Mentor Support and personal feedback",
+    heroRegisterBtn: "Register Now",
+    heroViewProgramBtn: "Explore Curriculum",
+    heroTrustSignal: "Fast and secure registration via Google Forms",
+    heroPromptCopy: "Copy Prompt",
+    heroPromptCopied: "Copied!",
+    heroRenderTime: "Render time:",
+    heroTimeVal: "12 seconds",
+    heroStat1Val: "10x",
+    heroStat1Label: "Design Speed",
+    heroStat1Badge: "Powered by AI Tools",
+    heroStat2Val: "500+",
+    heroStat2Label: "Successful Graduates",
+    heroStat2Badge: "Certified Specialists",
+    heroStat3Val: "$800+",
+    heroStat3Label: "Average Monthly Income",
+    heroStat3Badge: "Freelance & Agency roles",
+    heroStat4Val: "100%",
+    heroStat4Label: "Hands-on Portfolio",
+    heroStat4Badge: "With ready case studies",
+
+    // Mentor
+    mentorBadge: "Course Creator & Mentor",
+    mentorTitle: "Asom Designer (@Asom.teacher)",
+    mentorSub: "Lead AI Graphic Designer & Content Creator with 7+ years of experience",
+    mentorBio: "Expert in Graphic Design, Generative AI visual creation, 3D Anamorphic Billboard commercials, and Motion Graphics. Completed hundreds of commercial projects for international and regional brands.",
+    mentorExp: "7+ Years Experience",
+    mentorStudents: "1200+ Students",
+    mentorYoutubeBtn: "YouTube Channel: @Asom.teacher",
+    mentorRegisterBtn: "Enroll with Mentor",
+
+    // Gallery / Works
+    galleryBadge: "Real Results & Portfolio",
+    galleryTitle: "Student & Mentor Showcases",
+    gallerySub: "Real commercial projects created with Artificial Intelligence and modern graphic design tools.",
+    galleryFilterAll: "All Works",
+    galleryFilter3D: "3D & Motion VFX",
+    galleryFilterBrand: "Branding",
+    galleryFilterSMM: "SMM Banners",
+    galleryFilterLogo: "Logos",
+    galleryMentorWork: "Mentor Work by Asom Designer: Times Square 3D Billboard",
+    galleryViewPrompt: "Prompt & Details",
+
+    // Modules / Program
+    modulesBadge: "Full Curriculum",
+    modulesTitle: "6 Comprehensive Modules",
+    modulesSub: "Step-by-step learning path from beginner to professional level.",
+    modulesLessons: "lessons",
+    modulesProject: "Module Project:",
+    modulesTools: "Tools Used:",
+
+    // Why Us
+    whyUsBadge: "Why Choose Us?",
+    whyUsTitle: "Why Is This Course Best For You?",
+    whyUsSub: "Unlike traditional slow design workflows, AI opens infinite creative opportunities for you.",
+
+    // Playground
+    playgroundBadge: "AI Prompt Laboratory",
+    playgroundTitle: "Test AI Prompts Live",
+    playgroundSub: "Explore and copy ready-to-use Midjourney & DALL-E prompt templates.",
+
+    // Pricing
+    pricingBadge: "Flexible Plans",
+    pricingTitle: "Choose Your Learning Plan",
+    pricingSub: "All plans include mentor feedback and guaranteed portfolio projects.",
+    pricingSelectBtn: "Select This Plan",
+    pricingPopular: "Most Popular Choice",
+
+    // FAQ
+    faqBadge: "Frequently Asked Questions",
+    faqTitle: "Answers to Your Questions",
+    faqSub: "Find answers to the most common questions about our AI Design course.",
+
+    // CTA & Contact
+    ctaBadge: "Registration",
+    ctaTitle: "Build Your Future with AI Design!",
+    ctaSub: "Limited seats available. Submit your application via Google Forms right now and receive a free AI Prompt pack.",
+    phoneLabel: "Phone:",
+    telegramLabel: "Telegram:",
+    youtubeLabel: "YouTube:",
+
+    // Footer
+    footerRights: "All rights reserved.",
+  }
+};
+
+export type TranslationKeys = keyof typeof translations.uz;

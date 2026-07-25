@@ -1,5 +1,6 @@
 import React from 'react';
 import { ADVANTAGES, GOOGLE_FORM_URL } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 import {
   Flame,
   Award,
@@ -7,13 +8,12 @@ import {
   Users,
   LockOpen,
   Database,
-  CheckCircle2,
-  Sparkles,
-  ArrowUpRight,
-  ShieldCheck
+  Sparkles
 } from 'lucide-react';
 
 export const WhyUs: React.FC = () => {
+  const { t } = useLanguage();
+
   const renderAdvIcon = (iconName: string) => {
     switch (iconName) {
       case 'Flame': return <Flame className="w-6 h-6 text-amber-400" />;
@@ -27,7 +27,7 @@ export const WhyUs: React.FC = () => {
   };
 
   return (
-    <section id="why-us" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <section id="why-us" className="py-20 sm:py-28 bg-white relative overflow-hidden text-slate-900">
       {/* Background glow */}
       <div className="absolute top-1/3 right-0 w-80 h-80 bg-cyan-100/60 rounded-full blur-[120px] pointer-events-none" />
 
@@ -37,13 +37,13 @@ export const WhyUs: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-200 text-amber-800 text-xs font-semibold uppercase tracking-wider">
             <Award className="w-3.5 h-3.5 text-amber-600" />
-            <span>Nega Aynan Bizning Kurs?</span>
+            <span>{t('whyUsBadge')}</span>
           </div>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900">
-            Natijaga yo'naltirilgan <span className="text-gradient-primary">Afzalliklarimiz</span>
+            {t('whyUsTitle')}
           </h2>
           <p className="text-slate-600 text-base">
-            Siz shunchaki nazariy videolarni tomosha qilmaysiz. Har bir dars o'z ichiga amaliy natija va mentor tekshiruvini oladi.
+            {t('whyUsSub')}
           </p>
         </div>
 
@@ -139,3 +139,4 @@ export const WhyUs: React.FC = () => {
     </section>
   );
 };
+

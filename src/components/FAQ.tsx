@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import { FAQ_ITEMS, GOOGLE_FORM_URL } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 import { HelpCircle, ChevronDown, ChevronUp, ArrowUpRight } from 'lucide-react';
 
 export const FAQ: React.FC = () => {
   const [openId, setOpenId] = useState<number | null>(1);
+  const { t } = useLanguage();
 
   const toggleFaq = (id: number) => {
     setOpenId(openId === id ? null : id);
   };
 
   return (
-    <section id="faq" className="py-20 sm:py-28 bg-white relative">
+    <section id="faq" className="py-20 sm:py-28 bg-white relative text-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Section Header */}
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-semibold uppercase tracking-wider">
             <HelpCircle className="w-3.5 h-3.5 text-purple-600" />
-            <span>Ko'p Beriladigan Savollar</span>
+            <span>{t('faqBadge')}</span>
           </div>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl text-slate-900">
-            Savollaringizga <span className="text-gradient-primary">Javoblar</span>
+            {t('faqTitle')}
           </h2>
           <p className="text-slate-600 text-base">
-            O'quvchilarimiz tomonidan eng ko'p beriladigan savollarga javob bering:
+            {t('faqSub')}
           </p>
         </div>
 
@@ -66,10 +68,10 @@ export const FAQ: React.FC = () => {
         {/* Bottom Contact Note */}
         <div className="text-center p-8 rounded-3xl bg-slate-50 border border-indigo-100 space-y-3">
           <p className="text-slate-900 font-heading font-bold text-lg">
-            Boshqa savollaringiz bormi?
+            {t('faqMoreQuestions')}
           </p>
           <p className="text-slate-600 text-sm">
-            Google Form so'rovnomasini to'ldiring va menejerlarimiz siz bilan bog'lanib barcha savollarga javob berishadi.
+            {t('faqMoreQuestionsSub')}
           </p>
           <div className="pt-2">
             <a
@@ -78,7 +80,7 @@ export const FAQ: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-purple-600 hover:bg-purple-500 transition-colors shadow-md shadow-purple-600/20"
             >
-              <span>So'rov Yuborish (Google Form)</span>
+              <span>{t('faqSendRequest')}</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
@@ -88,3 +90,4 @@ export const FAQ: React.FC = () => {
     </section>
   );
 };
+

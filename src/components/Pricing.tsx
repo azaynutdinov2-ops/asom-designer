@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { PRICING_PLANS, GOOGLE_FORM_URL } from '../constants';
-import { Check, Flame, ArrowUpRight, Clock, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { Check, Flame, ArrowUpRight, Clock, ShieldCheck } from 'lucide-react';
 
 export const Pricing: React.FC = () => {
+  const { t } = useLanguage();
   // Countdown Timer State
   const [timeLeft, setTimeLeft] = useState({
     hours: 14,
@@ -23,7 +25,7 @@ export const Pricing: React.FC = () => {
   }, []);
 
   return (
-    <section id="pricing" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <section id="pricing" className="py-20 sm:py-28 bg-white relative overflow-hidden text-slate-900">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-100/60 rounded-full blur-[140px] pointer-events-none" />
 
@@ -33,13 +35,13 @@ export const Pricing: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-200 text-amber-800 text-xs font-semibold uppercase tracking-wider">
             <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-            <span>Chegirmali Tariflar & Kafolat</span>
+            <span>{t('pricingBadge')}</span>
           </div>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900">
-            O'zingizga mos <span className="text-gradient-primary">Tarifni Tanlang</span>
+            {t('pricingTitle')}
           </h2>
           <p className="text-slate-600 text-base">
-            Chegirmali narxda ro'yxatdan o'tish uchun quyidagi Google Form so'rovnomasini to'ldiring:
+            {t('pricingSub')}
           </p>
         </div>
 
@@ -81,7 +83,7 @@ export const Pricing: React.FC = () => {
             >
               {plan.popular && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-md">
-                  {plan.badge}
+                  {t('pricingPopular')}
                 </div>
               )}
 
@@ -130,7 +132,7 @@ export const Pricing: React.FC = () => {
                       : 'bg-slate-900 hover:bg-slate-800 text-white'
                   }`}
                 >
-                  <span>{plan.ctaText}</span>
+                  <span>{t('pricingSelectBtn')}</span>
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
@@ -148,3 +150,4 @@ export const Pricing: React.FC = () => {
     </section>
   );
 };
+

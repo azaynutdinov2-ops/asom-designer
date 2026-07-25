@@ -1,8 +1,11 @@
 import React from 'react';
 import { MENTOR_DATA, GOOGLE_FORM_URL, CONTACT_INFO } from '../constants';
-import { Award, CheckCircle2, Sparkles, Star, Briefcase, ArrowUpRight, ShieldCheck, Youtube } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { Award, Star, ArrowUpRight, Youtube } from 'lucide-react';
 
 export const Mentor: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="mentor" className="py-20 sm:py-28 bg-slate-50 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -11,13 +14,13 @@ export const Mentor: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-semibold uppercase tracking-wider">
             <Award className="w-3.5 h-3.5 text-purple-600" />
-            <span>Kurs Rahbari va Mentor</span>
+            <span>{t('mentorBadge')}</span>
           </div>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900">
-            Mentor <span className="text-gradient-primary">Haqida</span>
+            {t('mentorTitle')}
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
-            Dizayn va AI sohasida amaliy bilim beruvchi tajribali mentor bilan o'rganing.
+            {t('mentorSub')}
           </p>
         </div>
 
@@ -52,9 +55,8 @@ export const Mentor: React.FC = () => {
                 <h3 className="font-heading font-bold text-2xl sm:text-3xl text-slate-900">
                   {MENTOR_DATA.name}
                 </h3>
-                {/* Mandatory text: 6 yildan ortiq tajribaga ega dizayner, shu bilan birga AI (sun'iy intellekt) vositalarini ham juda yaxshi biladi. */}
                 <p className="text-slate-700 text-base leading-relaxed mt-3 font-medium p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100/80">
-                  "{MENTOR_DATA.bio}"
+                  "{t('mentorBio')}"
                 </p>
               </div>
 
@@ -91,7 +93,7 @@ export const Mentor: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-md transition-all group"
                 >
-                  <span>Mentordan O'rganish Uchun Ro'yxatdan O'tish</span>
+                  <span>{t('mentorRegisterBtn')}</span>
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
 
@@ -102,7 +104,7 @@ export const Mentor: React.FC = () => {
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-xs text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 transition-all"
                 >
                   <Youtube className="w-4 h-4 text-red-600 fill-red-600" />
-                  <span>YouTube Kanal: @Asom.teacher</span>
+                  <span>{t('mentorYoutubeBtn')}</span>
                 </a>
               </div>
 
@@ -115,3 +117,4 @@ export const Mentor: React.FC = () => {
     </section>
   );
 };
+

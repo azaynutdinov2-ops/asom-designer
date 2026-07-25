@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { PROMPT_PRESETS, GOOGLE_FORM_URL } from '../constants';
 import { PromptPreset } from '../types';
-import { Sparkles, Copy, Check, Calculator, DollarSign, ArrowUpRight, Zap } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { Sparkles, Copy, Check, Calculator, ArrowUpRight, Zap } from 'lucide-react';
 
 export const InteractivePlayground: React.FC = () => {
   const [selectedPreset, setSelectedPreset] = useState<PromptPreset>(PROMPT_PRESETS[0]);
   const [copied, setCopied] = useState(false);
+  const { t } = useLanguage();
 
   // ROI Calculator state
   const [projectsPerMonth, setProjectsPerMonth] = useState<number>(8);
@@ -20,20 +22,20 @@ export const InteractivePlayground: React.FC = () => {
   };
 
   return (
-    <section className="py-20 sm:py-28 bg-slate-50 relative overflow-hidden">
+    <section className="py-20 sm:py-28 bg-slate-50 relative overflow-hidden text-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
         
         {/* Playground Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-semibold uppercase tracking-wider">
             <Zap className="w-3.5 h-3.5 text-purple-600" />
-            <span>Interaktiv AI Prompter & Daromad Kalkulyatori</span>
+            <span>{t('playgroundBadge')}</span>
           </div>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900">
-            Sinab Ko'ring: <span className="text-gradient-primary">AI Prompt Simulyatori</span>
+            {t('playgroundTitle')}
           </h2>
           <p className="text-slate-600 text-base">
-            Quyida kursda ishlatiladigan mualliflik promtlar namunasini sinab ko'ring va ularning qanday natija berishini ko'ring:
+            {t('playgroundSub')}
           </p>
         </div>
 
@@ -85,7 +87,7 @@ export const InteractivePlayground: React.FC = () => {
               {/* Prompt Text Box */}
               <div className="p-4 rounded-2xl bg-slate-50 border border-indigo-100 space-y-2">
                 <div className="flex items-center justify-between text-xs text-slate-500 font-mono">
-                  <span className="font-semibold">Prompt matni:</span>
+                  <span className="font-semibold">{t('promptText')}:</span>
                   <button
                     onClick={handleCopyPrompt}
                     className="flex items-center gap-1 hover:text-purple-700 transition-colors bg-white px-2.5 py-1 rounded-lg border border-slate-200 text-slate-700 font-sans shadow-2xs"
@@ -93,12 +95,12 @@ export const InteractivePlayground: React.FC = () => {
                     {copied ? (
                       <>
                         <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span className="text-emerald-600 font-bold">Nusxalandi!</span>
+                        <span className="text-emerald-600 font-bold">{t('promptCopied')}</span>
                       </>
                     ) : (
                       <>
                         <Copy className="w-3.5 h-3.5" />
-                        <span>Kopiya qilish</span>
+                        <span>{t('promptCopyBtn')}</span>
                       </>
                     )}
                   </button>
@@ -117,15 +119,15 @@ export const InteractivePlayground: React.FC = () => {
                 <Calculator className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-lg text-slate-900">Daromad Kalkulyatori</h3>
-                <p className="text-xs text-slate-500">AI bilan oyiga qancha topishingiz mumkin?</p>
+                <h3 className="font-heading font-bold text-lg text-slate-900">{t('calcTitle')}</h3>
+                <p className="text-xs text-slate-500">{t('calcSub')}</p>
               </div>
             </div>
 
             {/* Slider 1: Projects Per Month */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs sm:text-sm font-semibold">
-                <span className="text-slate-700">Oylik buyurtmalar soni:</span>
+                <span className="text-slate-700">{t('calcProjectsLabel')}:</span>
                 <span className="text-purple-700 font-extrabold">{projectsPerMonth} ta loyiha</span>
               </div>
               <input
@@ -141,7 +143,7 @@ export const InteractivePlayground: React.FC = () => {
             {/* Slider 2: Average Price Per Project */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs sm:text-sm font-semibold">
-                <span className="text-slate-700">1 ta loyiha o'rtacha narxi ($):</span>
+                <span className="text-slate-700">{t('calcPriceLabel')}:</span>
                 <span className="text-cyan-700 font-extrabold">${pricePerProject} USD</span>
               </div>
               <input
@@ -158,7 +160,7 @@ export const InteractivePlayground: React.FC = () => {
             {/* Estimated Earnings Outcome Card */}
             <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-1">
               <span className="text-xs text-slate-600 uppercase tracking-wider font-bold">
-                Taxminiy Oylik Sof Daromadingiz:
+                {t('calcEstimatedEarnings')}
               </span>
               <div className="font-heading font-extrabold text-3xl sm:text-4xl text-emerald-700">
                 ${estimatedMonthlyEarnings.toLocaleString()} USD
@@ -175,7 +177,7 @@ export const InteractivePlayground: React.FC = () => {
               rel="noopener noreferrer"
               className="w-full py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-md shadow-purple-600/20 flex items-center justify-center gap-2"
             >
-              <span>Ushbu Daromadga Erishish Uzoq Emas!</span>
+              <span>{t('register')}</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
@@ -186,3 +188,4 @@ export const InteractivePlayground: React.FC = () => {
     </section>
   );
 };
+

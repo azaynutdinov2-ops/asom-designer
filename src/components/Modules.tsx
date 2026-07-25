@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { COURSE_MODULES, GOOGLE_FORM_URL } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 import {
   ChevronDown,
   ChevronUp,
@@ -18,6 +19,7 @@ import {
 
 export const Modules: React.FC = () => {
   const [openModuleId, setOpenModuleId] = useState<number | null>(1);
+  const { t } = useLanguage();
 
   const toggleModule = (id: number) => {
     setOpenModuleId(openModuleId === id ? null : id);
@@ -43,13 +45,13 @@ export const Modules: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-700 text-xs font-semibold uppercase tracking-wider">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Bosqichma-bosqich O'quv Dasturi</span>
+            <span>{t('modulesBadge')}</span>
           </div>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900">
-            6 Haftalik <span className="text-gradient-primary">Mukammal Dastur</span>
+            {t('modulesTitle')}
           </h2>
           <p className="text-slate-600 text-base">
-            Har bir modul o'z ichiga amaliy topshiriqlar, tayyor shablonlar va real mijoz loyihalarini qamrab oladi.
+            {t('modulesSub')}
           </p>
         </div>
 
@@ -83,7 +85,7 @@ export const Modules: React.FC = () => {
                           {module.duration}
                         </span>
                         <span className="text-xs text-slate-500 font-medium flex items-center gap-1">
-                          <Clock className="w-3 h-3 text-slate-400" /> {module.lessonsCount} ta dars
+                          <Clock className="w-3 h-3 text-slate-400" /> {module.lessonsCount} {t('modulesLessons')}
                         </span>
                       </div>
 
@@ -128,7 +130,7 @@ export const Modules: React.FC = () => {
                       <FolderKanban className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                       <div>
                         <span className="text-xs font-bold text-amber-800 uppercase">
-                          Modul Yakunidagi Amaliy Loyiha:
+                          {t('modulesProject')}
                         </span>
                         <p className="text-xs text-slate-800 font-semibold mt-0.5">
                           {module.project}
@@ -138,7 +140,7 @@ export const Modules: React.FC = () => {
 
                     {/* Tools Badges */}
                     <div className="flex items-center gap-2 pt-2">
-                      <span className="text-xs text-slate-500 font-semibold">Ishlatiladigan Vositalar:</span>
+                      <span className="text-xs text-slate-500 font-semibold">{t('modulesTools')}</span>
                       <div className="flex flex-wrap gap-1.5">
                         {module.toolsUsed.map((tool, tIdx) => (
                           <span
@@ -166,7 +168,7 @@ export const Modules: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-xl shadow-purple-600/30"
           >
-            <span>Ushbu Dastur Bo'yicha Ro'yxatdan O'tish</span>
+            <span>{t('register')}</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
@@ -175,3 +177,4 @@ export const Modules: React.FC = () => {
     </section>
   );
 };
+

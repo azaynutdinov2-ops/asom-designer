@@ -1,10 +1,13 @@
 import React from 'react';
-import { Sparkles, CheckCircle2, Palette, Share2, Briefcase, Cpu, Zap, ArrowUpRight } from 'lucide-react';
+import { Sparkles, Palette, Share2, Briefcase, Cpu, Zap, ArrowUpRight } from 'lucide-react';
 import { AI_TOOLS, TARGET_AUDIENCE, GOOGLE_FORM_URL } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 
 export const AboutCourse: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
-    <section id="about" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <section id="about" className="py-20 sm:py-28 bg-white relative overflow-hidden text-slate-900">
       {/* Background glow */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-purple-100/70 rounded-full blur-[120px] pointer-events-none" />
 
@@ -14,13 +17,13 @@ export const AboutCourse: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-semibold uppercase tracking-wider">
             <Cpu className="w-3.5 h-3.5 text-purple-600" />
-            <span>Kurs Haqida & AI Texnologiyalar</span>
+            <span>{t('aboutBadge')}</span>
           </div>
           <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900">
-            Kelajak dizaynini <span className="text-gradient-primary">bugun egallang</span>
+            {t('aboutTitle')}
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
-            Ushbu kursda siz shunchaki grafik dasturlarni emas, balki sun'iy intellekt neyrotarmoqlari bilan professional darajada ishlash, promptlar yozish va xalqaro frilansda yuqori daromad topishni o'rganasiz.
+            {t('aboutSub')}
           </p>
         </div>
 
@@ -151,7 +154,7 @@ export const AboutCourse: React.FC = () => {
               rel="noopener noreferrer"
               className="px-6 py-3.5 rounded-xl font-bold text-sm text-purple-900 bg-white hover:bg-purple-50 transition-colors shadow-lg shrink-0 flex items-center gap-2"
             >
-              <span>Arizalarni To'ldirish</span>
+              <span>{t('heroRegisterBtn')}</span>
               <ArrowUpRight className="w-4 h-4 text-purple-900" />
             </a>
           </div>
@@ -162,3 +165,4 @@ export const AboutCourse: React.FC = () => {
     </section>
   );
 };
+

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Sparkles, ArrowRight, CheckCircle2, Play, Zap, ShieldCheck, Flame, Copy, Check } from 'lucide-react';
-import { GOOGLE_FORM_URL, IMAGES, COURSE_STATS } from '../constants';
+import { GOOGLE_FORM_URL, IMAGES } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Hero: React.FC = () => {
   const [copiedPrompt, setCopiedPrompt] = useState(false);
+  const { t } = useLanguage();
   const samplePrompt = "Luxury perfume bottle, iridescent glass refractions, golden liquid splash, floating orchids, photorealistic advertisement --ar 4:3 --v 6.0";
 
   const handleCopy = () => {
@@ -11,6 +13,13 @@ export const Hero: React.FC = () => {
     setCopiedPrompt(true);
     setTimeout(() => setCopiedPrompt(false), 2000);
   };
+
+  const courseStats = [
+    { value: t('heroStat1Val'), label: t('heroStat1Label'), badge: t('heroStat1Badge') },
+    { value: t('heroStat2Val'), label: t('heroStat2Label'), badge: t('heroStat2Badge') },
+    { value: t('heroStat3Val'), label: t('heroStat3Label'), badge: t('heroStat3Badge') },
+    { value: t('heroStat4Val'), label: t('heroStat4Label'), badge: t('heroStat4Badge') }
+  ];
 
   return (
     <section className="relative pt-8 pb-16 md:pt-14 md:pb-24 overflow-hidden bg-[#090d16] text-white">
@@ -27,37 +36,37 @@ export const Hero: React.FC = () => {
             {/* Tagline Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-200 text-xs sm:text-sm font-bold tracking-wide shadow-sm">
               <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
-              <span>Sun'iy Intellekt Bilan Zamonaviy Grafik Dizayn Kursi</span>
+              <span>{t('heroBadge')}</span>
             </div>
 
             {/* Main Headline (Pure White) */}
             <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12]">
-              Grafik dizaynni <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-cyan-300">Sun'iy Intellekt (AI)</span> yordamida o'rganing
+              {t('heroTitleLine1')} <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-cyan-300">{t('heroTitleAi')}</span> {t('heroTitleLine2')}
             </h1>
 
             {/* Subtitle (Clear High-Contrast White/Slate) */}
             <p className="text-slate-200 text-base sm:text-lg lg:text-xl font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              <b className="text-white">Midjourney v6, Adobe Firefly, Canva AI</b> va <b className="text-white">ChatGPT 4o</b> yordamida dizayn yaratish tezligingizni <b className="text-amber-300">10 barobar oshiring</b> va xalqaro frilans bozorida daromad toping.
+              {t('heroSubText')}
             </p>
 
             {/* Key Benefits List (Pure White Text) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-white text-xs sm:text-sm max-w-xl mx-auto lg:mx-0 text-left">
               <div className="flex items-center gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><b className="text-white">100% Amaliyot</b> va 5+ real portfolio loyihasi</span>
+                <span>{t('heroB1')}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><b className="text-white">500+ Tayyor AI Promptlar</b> bazasi sovg'a</span>
+                <span>{t('heroB2')}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><b className="text-white">Xalqaro Sertifikat</b> va shtrix-kod</span>
+                <span>{t('heroB3')}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><b className="text-white">24/7 Mentor</b> yordami va shaxsiy feedback</span>
+                <span>{t('heroB4')}</span>
               </div>
             </div>
 
@@ -69,7 +78,7 @@ export const Hero: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-xl shadow-purple-600/40 hover:shadow-purple-500/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-3 group border border-purple-400/30"
               >
-                <span>Ro'yxatdan O'tish</span>
+                <span>{t('heroRegisterBtn')}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
 
@@ -78,14 +87,14 @@ export const Hero: React.FC = () => {
                 className="w-full sm:w-auto px-6 py-4 rounded-xl font-bold text-sm text-slate-100 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
               >
                 <Play className="w-4 h-4 text-purple-400 fill-purple-400" />
-                <span>Dasturni Ko'rish</span>
+                <span>{t('heroViewProgramBtn')}</span>
               </a>
             </div>
 
             {/* Trust Signal Note */}
             <div className="pt-2 flex items-center justify-center lg:justify-start gap-2 text-xs text-slate-300 font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Google Forms orqali tezkor va xavfsiz ro'yxatdan o'ting</span>
+              <span>{t('heroTrustSignal')}</span>
             </div>
 
           </div>
@@ -128,12 +137,12 @@ export const Hero: React.FC = () => {
                     {copiedPrompt ? (
                       <>
                         <Check className="w-3 h-3 text-emerald-400" />
-                        <span className="text-emerald-400 font-bold">Nusxalandi!</span>
+                        <span className="text-emerald-400 font-bold">{t('heroPromptCopied')}</span>
                       </>
                     ) : (
                       <>
                         <Copy className="w-3 h-3 text-slate-400" />
-                        <span>Promptni nusxalash</span>
+                        <span>{t('heroPromptCopy')}</span>
                       </>
                     )}
                   </button>
@@ -144,7 +153,7 @@ export const Hero: React.FC = () => {
                 </div>
 
                 <div className="flex items-center justify-between text-xs text-slate-400 pt-1 font-medium">
-                  <span>Generatsiya vaqti: <b className="text-slate-200">12 soniya</b></span>
+                  <span>{t('heroRenderTime')} <b className="text-slate-200">{t('heroTimeVal')}</b></span>
                   <span className="text-purple-400 font-bold">4K Photorealistic</span>
                 </div>
               </div>
@@ -157,8 +166,8 @@ export const Hero: React.FC = () => {
                 <Flame className="w-5 h-5 fill-amber-400 text-amber-400" />
               </div>
               <div>
-                <p className="text-xs text-slate-300 font-medium">Bitta dizayn tayyorlash</p>
-                <p className="text-sm font-bold text-white">4 soat emas, 15 minut!</p>
+                <p className="text-xs text-slate-300 font-medium">Midjourney + AI Speed</p>
+                <p className="text-sm font-bold text-white">4x faster workflow!</p>
               </div>
             </div>
 
@@ -168,7 +177,7 @@ export const Hero: React.FC = () => {
 
         {/* Counter Stats Strip */}
         <div className="mt-16 pt-10 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {COURSE_STATS.map((stat, idx) => (
+          {courseStats.map((stat, idx) => (
             <div key={idx} className="text-center md:text-left space-y-1 p-4 rounded-2xl bg-slate-900/60 border border-slate-800 shadow-sm">
               <div className="font-heading font-extrabold text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-cyan-300">
                 {stat.value}
@@ -183,3 +192,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
