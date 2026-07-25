@@ -7,7 +7,7 @@ import art1 from './assets/images/ai_artwork_1_1784902858358.jpg';
 import art2 from './assets/images/ai_artwork_2_1784902876456.jpg';
 import art3 from './assets/images/ai_artwork_3_1784902892159.jpg';
 import art4 from './assets/images/ai_artwork_4_1784902907974.jpg';
-import billboardImg from './assets/images/shylo_3d_billboard_1784983976230.jpg';
+import musicHologramImg from './assets/images/music_hologram_man_1785000238713.jpg';
 
 export const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe3FTfqFWL5bi-4cBwRzhmHp7djpNnP44d1bYxoyQNWAcpoJw/viewform?usp=header";
 
@@ -25,8 +25,8 @@ export const CONTACT_INFO = {
 export const IMAGES = {
   hero: heroImg,
   mentor: mentorImg,
-  billboard: billboardImg,
-  artworks: [billboardImg, art1, art2, art3, art4]
+  billboard: musicHologramImg,
+  artworks: [musicHologramImg, art1, art2, art3, art4]
 };
 
 export const COURSE_STATS = [
@@ -285,14 +285,14 @@ export const MENTOR_DATA: Mentor = {
 export const STUDENT_WORKS: StudentWork[] = [
   {
     id: 1,
-    title: "Times Square 3D Billboard & VFX (Shylo Victoria No 15 Suave Blue)",
+    title: "AR Holographic Music Player Concept (Spotify AR)",
     studentName: "Asom Designer (Mentor)",
-    category: "3D Anamorphic Billboard & VFX",
-    image: billboardImg,
-    prompt: "Photorealistic 3D anamorphic billboard advertising in Times Square NYC, giant glass screen with volumetric blue smoke VFX, man holding out Shylo Victoria No 15 Suave Blue perfume bottle floating out of screen, 8k resolution, cinematic lighting, hyper-realistic optical illusion --ar 9:16 --v 6.0",
-    tool: "Midjourney v6 + Runway Gen-2 / Luma + After Effects AI",
+    category: "3D Anamorphic & AR VFX",
+    image: musicHologramImg,
+    prompt: "Photorealistic young man in a black shirt standing in traditional street with rickshaws, surrounded by floating semi-transparent glowing holographic glass Spotify audio player cards, track controls, album art, cinematic AR UI lighting, hyper-realistic 8k resolution --ar 3:4 --v 6.0",
+    tool: "Midjourney v6 + Photoshop AI + Figma AR",
     duration: "1 kun",
-    clientType: "Nyu-York Times Square 3D Bilbord Reklamasi"
+    clientType: "AR / Holographic Musiqa Pleyeri Reklama Konsepsiyasi"
   },
   {
     id: 2,

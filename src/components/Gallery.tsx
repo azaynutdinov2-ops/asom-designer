@@ -162,7 +162,7 @@ export const Gallery: React.FC<GalleryProps> = ({ onOpenLightbox }) => {
                   <div className="relative w-full h-full bg-slate-950 flex flex-col items-center justify-center p-6 text-center text-white overflow-hidden">
                     <img
                       src={IMAGES.billboard}
-                      alt="Shylo Victoria 3D Billboard Times Square"
+                      alt="AR Holographic Music Player Concept"
                       className="absolute inset-0 w-full h-full object-cover object-center opacity-70 group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/30" />
@@ -170,7 +170,7 @@ export const Gallery: React.FC<GalleryProps> = ({ onOpenLightbox }) => {
                     {/* Badge */}
                     <div className="absolute top-4 left-4 bg-purple-600/90 text-white text-[11px] font-bold px-3 py-1 rounded-full border border-purple-400 shadow-lg backdrop-blur-md z-10 flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                      <span>Mentor Asom Designer Ishi: Times Square 3D Billboard</span>
+                      <span>Mentor Asom Designer Ishi: AR Holographic Music Concept</span>
                     </div>
 
                     {/* Play Button */}
@@ -184,10 +184,10 @@ export const Gallery: React.FC<GalleryProps> = ({ onOpenLightbox }) => {
 
                     <div className="mt-6 z-10 space-y-1 max-w-md">
                       <p className="font-heading font-bold text-lg sm:text-xl text-white">
-                        Shylo Victoria No 15 Suave Blue
+                        Spotify AR Holographic UI Concept
                       </p>
                       <p className="text-xs text-purple-200 font-medium">
-                        Times Square 3D Billboard AI & VFX (Midjourney v6 + Motion VFX + Blue Smoke Illusion)
+                        3D Anamorphic & AR VFX (Midjourney v6 + Photoshop AI + Figma AR)
                       </p>
                     </div>
                   </div>
