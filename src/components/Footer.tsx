@@ -1,9 +1,13 @@
 import React from 'react';
-import { Sparkles, Send, Instagram, Youtube, Globe, ArrowUpRight, Heart } from 'lucide-react';
+import { Sparkles, Send, Instagram, Youtube, Globe, ArrowUpRight, Heart, ShieldCheck } from 'lucide-react';
 import { GOOGLE_FORM_URL } from '../constants';
 import { useLanguage } from '../context/LanguageContext';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenAdmin?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
   const { t } = useLanguage();
 
   return (
@@ -126,9 +130,21 @@ export const Footer: React.FC = () => {
         {/* Bottom Copyright */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
           <p>© {new Date().getFullYear()} AI DESIGN PRO. {t('footerRights')}</p>
-          <p className="flex items-center gap-1">
-            <span>{t('footerMadeWith')}</span> <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-          </p>
+          
+          <div className="flex items-center gap-4">
+            {onOpenAdmin && (
+              <button
+                onClick={onOpenAdmin}
+                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-purple-400 hover:text-purple-300 font-medium text-xs flex items-center gap-1.5 border border-slate-700 transition-all"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Boshqaruv Paneli (Arizalar)</span>
+              </button>
+            )}
+            <p className="flex items-center gap-1">
+              <span>{t('footerMadeWith')}</span> <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
+            </p>
+          </div>
         </div>
 
       </div>

@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 import { GOOGLE_FORM_URL, CONTACT_INFO } from '../constants';
 import { useLanguage } from '../context/LanguageContext';
-import { Sparkles, ArrowUpRight, Phone, MessageSquare, Send, CheckCircle2, Youtube, RotateCcw } from 'lucide-react';
+import { Sparkles, ArrowUpRight, Phone, MessageSquare, Send, CheckCircle2, Youtube, RotateCcw, Loader2 } from 'lucide-react';
+import { sendLeadToTelegramAndSheets } from '../utils/leadSender';
 
 export const RegistrationCTA: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const { t } = useLanguage();
 
-  const handleQuickSubmit = (e: React.FormEvent) => {
+  const handleQuickSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone) return;
     
-    // Save locally
+    setSubmitting(true);
     try {
-      const existing = JSON.parse(localStorage.getItem('ai_designer_leads') || '[]');
-      existing.push({ name, phone, date: new Date().toISOString() });
-      localStorage.setItem('ai_designer_leads', JSON.stringify(existing));
-    } catch {
-      // ignore
+      // Direct instant delivery to Telegram Bot, Google Sheets, & local DB
+      await sendLeadToTelegramAndSheets(name, phone, 'Sayt Tezkor Forma');
+    } catch (err) {
+      console.error('Lead submit error:', err);
+    } finally {
+      setSubmitting(false);
+      setSubmitted(true);
     }
-
-    setSubmitted(true);
   };
 
   const telegramDirectLink = `https://t.me/Asom_Designer?text=${encodeURIComponent(
@@ -193,10 +195,20 @@ export const RegistrationCTA: React.FC = () => {
 
                   <button
                     type="submit"
+                    disabled={submitting}
                     className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-purple-600 hover:bg-purple-500 shadow-md shadow-purple-600/20 transition-all flex items-center justify-center gap-2"
                   >
-                    <span>{t('ctaSubmitBtn')}</span>
-                    <Send className="w-3.5 h-3.5" />
+                    {submitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Yuborilmoqda...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>{t('ctaSubmitBtn')}</span>
+                        <Send className="w-3.5 h-3.5" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}

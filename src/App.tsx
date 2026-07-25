@@ -12,12 +12,14 @@ import { FAQ } from './components/FAQ';
 import { RegistrationCTA } from './components/RegistrationCTA';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
+import { AdminLeadsModal } from './components/AdminLeadsModal';
 import { GOOGLE_FORM_URL } from './constants';
 import { StudentWork } from './types';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
 
 export function App() {
   const [selectedWork, setSelectedWork] = useState<StudentWork | null>(null);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col font-sans selection:bg-purple-500 selection:text-white">
@@ -58,12 +60,18 @@ export function App() {
       </main>
 
       {/* 10. Footer */}
-      <Footer />
+      <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
 
       {/* Lightbox Modal for Artworks */}
       <LightboxModal
         work={selectedWork}
         onClose={() => setSelectedWork(null)}
+      />
+
+      {/* Admin Panel & Leads Database Modal */}
+      <AdminLeadsModal
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
       />
 
       {/* Floating Bottom Quick Registration Pill for High Conversion */}
