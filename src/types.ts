@@ -1,25 +1,30 @@
 export interface CourseModule {
   id: number;
-  number: string;
   title: string;
-  description: string;
   duration: string;
-  lessonsCount: number;
-  skills: string[];
+  description: string;
+  topics: string[];
   tools: string[];
-  deliverable: string;
+  projectOutput: string;
 }
 
 export interface PricingPlan {
   id: string;
   name: string;
-  badge?: string;
-  isPopular?: boolean;
+  popular?: boolean;
   price: string;
   originalPrice: string;
+  period: string;
   description: string;
   features: string[];
-  ctaText: string;
+  badge?: string;
+}
+
+export interface FAQItem {
+  id: number;
+  question: string;
+  answer: string;
+  category: 'darslar' | 'tolov' | 'talablar' | 'natija';
 }
 
 export interface StudentWork {
@@ -27,60 +32,31 @@ export interface StudentWork {
   title: string;
   studentName: string;
   studentRole: string;
-  category: 'midjourney' | 'aivideo' | 'branding' | 'posters';
-  type: 'image' | 'video';
-  mediaUrl: string;
-  posterUrl?: string;
+  category: 'branding' | 'photorealism' | 'ui' | 'video';
+  image: string;
   promptUsed: string;
-  toolUsed: string;
-  timeSpentBeforeAI: string;
-  timeSpentWithAI: string;
+  toolsUsed: string[];
+  beforeAfterUrl?: string;
 }
 
-export interface FaqItem {
-  id: number;
-  question: string;
-  answer: string;
-  category?: string;
-}
-
-export interface Benefit {
-  id: number;
-  iconName: string;
+export interface VideoShowcaseItem {
+  id: string;
   title: string;
+  author: string;
   description: string;
-  highlight: string;
+  type: 'mentor_video' | 'ai_animation';
+  videoUrl: string;
+  thumbnailUrl: string;
+  duration: string;
+  tools: string[];
 }
 
-export interface MentorInfo {
-  name: string;
-  title: string;
-  experienceYears: number;
-  bio: string;
-  quote: string;
-  skills: string[];
-  stats: {
-    students: string;
-    projects: string;
-    experience: string;
-    rating: string;
-  };
-  contact: {
-    phone: string;
-    phoneDisplay: string;
-    telegram: string;
-    telegramUrl: string;
-    instagram: string;
-    instagramUrl: string;
-  };
+export interface ContactInfo {
+  phone: string;
+  phoneRaw: string;
+  telegram: string;
+  telegramUrl: string;
+  instagram: string;
+  instagramUrl: string;
+  googleFormUrl: string;
 }
-
-export const CONSTANTS = {
-  GOOGLE_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSe3FTfqFWL5bi-4cBwRzhmHp7djpNnP44d1bYxoyQNWAcpoJw/viewform?usp=header",
-  PHONE: "+998 99 807 62 75",
-  PHONE_TEL: "tel:+998998076275",
-  TELEGRAM_HANDLE: "@asom_uz",
-  TELEGRAM_URL: "https://t.me/asom_uz",
-  INSTAGRAM_HANDLE: "@asom.designer",
-  INSTAGRAM_URL: "https://www.instagram.com/asom.designer/",
-};

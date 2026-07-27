@@ -1,6 +1,6 @@
 {
   "name": "Grafik Dizayn AI Kurslari",
-  "description": "Grafik dizayn va Sun'iy Intellekt (Midjourney, Adobe Firefly, Canva AI) bo'yicha professional zamonaviy onlayn kurs landing sahifasi",
+  "description": "Sun'iy intellekt va grafik dizayn bo'yicha zamonaviy onlayn kurslar landing sayti",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

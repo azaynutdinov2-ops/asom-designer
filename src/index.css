@@ -1,61 +1,28 @@
 @import "tailwindcss";
 
-@layer base {
-  h1, h2, h3, h4, .font-heading {
-    font-family: 'Outfit', sans-serif;
-  }
+.ai-gradient {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
 }
 
-/* Glassmorphism and ambient glow utilities */
+.ai-gradient-hover:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #db2777 100%);
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.glass-card-dark {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+.text-gradient {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
-}
-
-.glow-blue {
-  box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.35);
-}
-
-.glow-purple {
-  box-shadow: 0 0 50px -10px rgba(168, 85, 247, 0.35);
-}
-
-/* Custom animated gradient background */
-@keyframes bgGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient-bg {
-  background-size: 200% 200%;
-  animation: bgGradient 12s ease infinite;
-}
-
-/* Hide scrollbar for clean horizontal gallery sliders */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 

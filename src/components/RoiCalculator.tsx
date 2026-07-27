@@ -1,125 +1,110 @@
 import React, { useState } from 'react';
-import { Calculator, TrendingUp, Clock, DollarSign, Sparkles, ArrowRight } from 'lucide-react';
+import { Calculator, Sparkles, ArrowRight, ExternalLink } from 'lucide-react';
+import { CONTACT_DATA } from '../constants';
 
-interface RoiCalculatorProps {
-  onOpenRegister: () => void;
-}
+export const RoiCalculator: React.FC = () => {
+  const [projectType, setProjectType] = useState<'branding' | 'smm' | 'character'>('smm');
+  const [projectsCount, setProjectsCount] = useState<number>(5);
 
-export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenRegister }) => {
-  const [ordersPerMonth, setOrdersPerMonth] = useState(5);
-  const [avgOrderPrice, setAvgOrderPrice] = useState(50); // $50
+  const pricePerProject = {
+    branding: 120, // $120 per brand identity
+    smm: 40,        // $40 per post batch / banner set
+    character: 80   // $80 per AI character illustration
+  };
 
-  const currentMonthlyIncome = ordersPerMonth * avgOrderPrice;
-  // With AI speed 4x, user can take 3x more orders easily or spend 70% less time
-  const aiPotentialOrders = ordersPerMonth * 3;
-  const aiPotentialIncome = aiPotentialOrders * avgOrderPrice;
-  const hoursSavedPerMonth = ordersPerMonth * 12; // average 12 hours saved per project with AI
+  const estimatedMonthlyIncomeUsd = pricePerProject[projectType] * projectsCount;
+  const estimatedMonthlyIncomeUzs = estimatedMonthlyIncomeUsd * 12800; // ~12800 UZS/USD
 
   return (
-    <section className="py-16 bg-white relative">
+    <section className="py-16 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-            <Calculator className="w-3.5 h-3.5" />
-            <span>AI ROI Kalkulyator</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            AI Yordamida Qancha Vaqt va Pul Tejashingizni Hisoblang
-          </h2>
-          <p className="text-sm text-slate-600">
-            Buyurtmalar soni va o'rtacha narxni belgilang — sun'iy intellekt daromadingizni qanday oshirishini ko'ring:
-          </p>
-        </div>
-
-        {/* Calculator Card */}
-        <div className="mt-10 max-w-4xl mx-auto glass-card p-6 sm:p-10 rounded-3xl border border-slate-200/90 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/5 backdrop-blur-xl p-8 sm:p-12 rounded-3xl border border-white/10 shadow-2xl">
           
-          {/* Sliders Input */}
-          <div className="md:col-span-6 space-y-6">
-            
-            {/* Slider 1 */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-bold text-slate-700">
-                <span>Oylik Buyurtmalar Soni:</span>
-                <span className="text-indigo-600 font-extrabold text-sm">{ordersPerMonth} ta loyiha</span>
-              </div>
-              <input
-                type="range"
-                min="1"
-                max="20"
-                value={ordersPerMonth}
-                onChange={(e) => setOrdersPerMonth(Number(e.target.value))}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
-              />
-              <div className="flex justify-between text-[10px] text-slate-400">
-                <span>1 ta</span>
-                <span>10 ta</span>
-                <span>20 ta</span>
-              </div>
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-200 text-xs font-bold uppercase tracking-wider">
+              <Calculator className="w-4 h-4 text-purple-400" />
+              <span>Interaktiv Daromad Kalkulyatori</span>
             </div>
 
-            {/* Slider 2 */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-bold text-slate-700">
-                <span>1 ta Loyiha O'rtacha Narxi ($):</span>
-                <span className="text-emerald-600 font-extrabold text-sm">${avgOrderPrice} USD</span>
-              </div>
-              <input
-                type="range"
-                min="10"
-                max="500"
-                step="10"
-                value={avgOrderPrice}
-                onChange={(e) => setAvgOrderPrice(Number(e.target.value))}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
-              />
-              <div className="flex justify-between text-[10px] text-slate-400">
-                <span>$10</span>
-                <span>$250</span>
-                <span>$500</span>
-              </div>
-            </div>
+            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              AI Dizayner Sifatida Qancha Daromad Topishingiz Mumkin?
+            </h3>
 
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
-              <p className="font-bold text-slate-800">Hozirgi oylik daromadingiz:</p>
-              <p className="text-lg font-extrabold text-slate-900">${currentMonthlyIncome} USD</p>
-            </div>
-
-          </div>
-
-          {/* Results Output */}
-          <div className="md:col-span-6 bg-gradient-to-br from-slate-900 to-indigo-950 text-white p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl space-y-5">
-            <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
-              AI Kursidan Keyingi Potensial:
-            </span>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Keling, taxminiy daromadingizni hisoblab ko‘ramiz. AI vositalari orqali 1 ta loyihani bajarishga atigi 1-2 soat vaqtingiz ketadi.
+            </p>
 
             <div className="space-y-4">
-              <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700">
-                <p className="text-[11px] text-slate-400 font-semibold uppercase">Yangi Oylik Daromad Potensiali</p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-heading">${aiPotentialIncome} USD</p>
-                  <span className="text-xs text-emerald-300 font-bold">(+300% o'sish)</span>
+              <div>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">
+                  Loyiha Turi:
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { id: 'smm', label: 'SMM Postlar' },
+                    { id: 'character', label: 'AI Art / Illyustratsiya' },
+                    { id: 'branding', label: 'Logotip & Brending' },
+                  ].map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => setProjectType(item.id as any)}
+                      className={`p-3 rounded-xl text-xs font-bold border transition-all ${
+                        projectType === item.id
+                          ? 'bg-purple-600 text-white border-purple-400 shadow-lg'
+                          : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700">
-                <p className="text-[11px] text-slate-400 font-semibold uppercase">Oylik Tejalgan Ish Vaqti</p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-xl sm:text-2xl font-extrabold text-indigo-300 font-heading">{hoursSavedPerMonth} Soat</p>
-                  <span className="text-xs text-indigo-200">soatlik vaqtingiz tejoladi</span>
+              <div>
+                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                  <span>Oylik Buyurtmalar Soni:</span>
+                  <span className="text-purple-300 text-sm font-extrabold">{projectsCount} ta loyiha</span>
                 </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={20}
+                  value={projectsCount}
+                  onChange={(e) => setProjectsCount(parseInt(e.target.value))}
+                  className="w-full accent-purple-500 bg-white/10 h-2 rounded-lg cursor-pointer"
+                />
               </div>
             </div>
+          </div>
 
-            <button
-              onClick={onOpenRegister}
-              className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-slate-950 font-extrabold text-xs px-5 py-3.5 rounded-xl transition-all shadow-md cursor-pointer"
+          <div className="lg:col-span-6 bg-gradient-to-br from-purple-900/60 to-indigo-900/60 p-8 rounded-2xl border border-purple-400/30 text-center space-y-6">
+            <p className="text-xs uppercase tracking-widest text-purple-300 font-bold">
+              Taxminiy Oylik Potensial Daromad:
+            </p>
+
+            <div className="space-y-1">
+              <h4 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+                ${estimatedMonthlyIncomeUsd} USD
+              </h4>
+              <p className="text-lg font-bold text-purple-200">
+                ~ {estimatedMonthlyIncomeUzs.toLocaleString('uz-UZ')} UZS
+              </p>
+            </div>
+
+            <p className="text-xs text-slate-300 leading-relaxed max-w-sm mx-auto">
+              Shu tariqa siz kursga kiritgan investitsiyangizni atigi <strong>1-oyning o‘zidayoq 2-3 baravar ortig‘i bilan</strong> qaytarib olasiz!
+            </p>
+
+            <a
+              href={CONTACT_DATA.googleFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-400 hover:to-indigo-400 shadow-xl shadow-purple-500/30 transition-all"
             >
-              <span>Daromadni AI Bilan Oshirish</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              <span>Daromadga erishishni boshlash</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
           </div>
 
         </div>
