@@ -1,0 +1,154 @@
+import React from 'react';
+import { Sparkles, Send, Instagram, Youtube, Globe, ArrowUpRight, Heart, ShieldCheck } from 'lucide-react';
+import { GOOGLE_FORM_URL } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
+
+interface FooterProps {
+  onOpenAdmin?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
+  const { t } = useLanguage();
+
+  return (
+    <footer className="bg-slate-900 border-t border-slate-800 pt-16 pb-8 text-slate-400 text-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        {/* Top Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          
+          {/* Brand Info (2 Cols) */}
+          <div className="lg:col-span-2 space-y-4">
+            <a href="#" className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 p-0.5">
+                <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-purple-400" />
+                </div>
+              </div>
+              <span className="font-heading font-bold text-xl text-white">
+                AI DESIGN <span className="text-purple-400 text-xs font-mono">PRO</span>
+              </span>
+            </a>
+
+            <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
+              {t('footerBrandDesc')}
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href="https://t.me/asom_uz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-300 flex items-center justify-center transition-colors border border-slate-700"
+                aria-label="Telegram"
+              >
+                <Send className="w-4 h-4" />
+              </a>
+              <a
+                href="https://instagram.com/asom.designer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-pink-600 hover:text-white text-slate-300 flex items-center justify-center transition-colors border border-slate-700"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.youtube.com/@Asom.teacher"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 hover:text-white text-slate-300 flex items-center justify-center transition-colors border border-slate-700"
+                aria-label="YouTube (@Asom.teacher)"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+              <a
+                href="https://behance.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-300 flex items-center justify-center transition-colors border border-slate-700"
+                aria-label="Behance"
+              >
+                <Globe className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links Column */}
+          <div className="space-y-3">
+            <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
+              {t('footerColSections')}
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li><a href="#about" className="hover:text-purple-400 transition-colors">{t('navAbout')}</a></li>
+              <li><a href="#modules" className="hover:text-purple-400 transition-colors">{t('navProgram')}</a></li>
+              <li><a href="#why-us" className="hover:text-purple-400 transition-colors">{t('navBenefits')}</a></li>
+              <li><a href="#mentor" className="hover:text-purple-400 transition-colors">{t('navMentor')}</a></li>
+              <li><a href="#gallery" className="hover:text-purple-400 transition-colors">{t('navGallery')}</a></li>
+            </ul>
+          </div>
+
+          {/* Tariflar & Registration */}
+          <div className="space-y-3">
+            <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
+              {t('footerColRegistration')}
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanStart')}</a></li>
+              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanPro')}</a></li>
+              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanVip')}</a></li>
+              <li>
+                <a
+                  href={GOOGLE_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-400 font-semibold hover:underline flex items-center gap-1 mt-1"
+                >
+                  <span>Google Form</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-3">
+            <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
+              {t('footerColContact')}
+            </h4>
+            <div className="space-y-2 text-xs text-slate-400">
+              <p>📍 Toshkent shahri, IT-Park</p>
+              <p>📞 +998 (99) 807-62-75</p>
+              <p>✉️ @asom_uz (Telegram)</p>
+              <p>🕒 {t('footerWorkHours')}</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Copyright */}
+        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
+          <p>© {new Date().getFullYear()} AI DESIGN PRO. {t('footerRights')}</p>
+          
+          <div className="flex items-center gap-4">
+            {onOpenAdmin && (
+              <button
+                onClick={onOpenAdmin}
+                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-purple-400 hover:text-purple-300 font-medium text-xs flex items-center gap-1.5 border border-slate-700 transition-all"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Boshqaruv Paneli (Arizalar)</span>
+              </button>
+            )}
+            <p className="flex items-center gap-1">
+              <span>{t('footerMadeWith')}</span> <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  );
+};
+
