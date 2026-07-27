@@ -1,94 +1,86 @@
 export interface CourseModule {
   id: number;
+  number: string;
   title: string;
-  subtitle: string;
-  duration: string;
   description: string;
+  duration: string;
   lessonsCount: number;
-  topics: string[];
-  project: string;
-  toolsUsed: string[];
-  icon: string;
+  skills: string[];
+  tools: string[];
+  deliverable: string;
 }
 
 export interface PricingPlan {
   id: string;
   name: string;
   badge?: string;
-  priceOriginal: string;
-  priceDiscount: string;
-  period: string;
-  popular?: boolean;
+  isPopular?: boolean;
+  price: string;
+  originalPrice: string;
+  description: string;
   features: string[];
   ctaText: string;
-  formUrl: string;
-}
-
-export interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
-  category: string;
 }
 
 export interface StudentWork {
   id: number;
   title: string;
   studentName: string;
-  category: string; // 'Logotiplar' | 'SMM Bannerlar' | 'Fotorealizm' | 'Brending' | '3D & Mascot'
-  image: string;
-  prompt: string;
-  tool: string;
-  duration: string;
-  clientType: string;
-  beforeImage?: string;
+  studentRole: string;
+  category: 'midjourney' | 'aivideo' | 'branding' | 'posters';
+  type: 'image' | 'video';
+  mediaUrl: string;
+  posterUrl?: string;
+  promptUsed: string;
+  toolUsed: string;
+  timeSpentBeforeAI: string;
+  timeSpentWithAI: string;
 }
 
-export interface AITool {
-  name: string;
-  description: string;
-  category: string;
-  logo: string;
-  accentColor: string;
-  popularUses: string[];
-}
-
-export interface TargetAudience {
-  title: string;
-  description: string;
-  iconName: string;
-  badge: string;
-}
-
-export interface Mentor {
-  name: string;
-  role: string;
-  experience: string;
-  image: string;
-  bio: string;
-  stats: { label: string; value: string }[];
-  achievements: string[];
-  portfolioHighlights: string[];
-}
-
-export interface Testimonial {
+export interface FaqItem {
   id: number;
-  name: string;
-  role: string;
-  salaryGrowth: string;
-  comment: string;
-  avatar: string;
-  rating: number;
-  verified: boolean;
+  question: string;
+  answer: string;
+  category?: string;
 }
 
-export interface PromptPreset {
-  id: string;
+export interface Benefit {
+  id: number;
+  iconName: string;
   title: string;
-  category: string;
-  promptText: string;
-  style: string;
-  previewImage: string;
-  estimatedTime: string;
-  toolName: string;
+  description: string;
+  highlight: string;
 }
+
+export interface MentorInfo {
+  name: string;
+  title: string;
+  experienceYears: number;
+  bio: string;
+  quote: string;
+  skills: string[];
+  stats: {
+    students: string;
+    projects: string;
+    experience: string;
+    rating: string;
+  };
+  contact: {
+    phone: string;
+    phoneDisplay: string;
+    telegram: string;
+    telegramUrl: string;
+    instagram: string;
+    instagramUrl: string;
+  };
+}
+
+export const CONSTANTS = {
+  GOOGLE_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSe3FTfqFWL5bi-4cBwRzhmHp7djpNnP44d1bYxoyQNWAcpoJw/viewform?usp=header",
+  PHONE: "+998 99 807 62 75",
+  PHONE_TEL: "tel:+998998076275",
+  TELEGRAM_HANDLE: "@asom_uz",
+  TELEGRAM_URL: "https://t.me/asom_uz",
+  INSTAGRAM_HANDLE: "@asom.designer",
+  INSTAGRAM_URL: "https://www.instagram.com/asom.designer/",
+};

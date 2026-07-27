@@ -1,142 +1,92 @@
 import React from 'react';
-import { ADVANTAGES, GOOGLE_FORM_URL } from '../constants';
-import { useLanguage } from '../context/LanguageContext';
-import {
-  Flame,
-  Award,
-  FolderCheck,
-  Users,
-  LockOpen,
-  Database,
-  Sparkles
-} from 'lucide-react';
+import { BENEFITS } from '../data/courseData';
+import { Zap, Award, FolderCheck, UserCheck, Users, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export const WhyUs: React.FC = () => {
-  const { t } = useLanguage();
-
-  const renderAdvIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Flame': return <Flame className="w-6 h-6 text-amber-400" />;
-      case 'Award': return <Award className="w-6 h-6 text-purple-400" />;
-      case 'FolderCheck': return <FolderCheck className="w-6 h-6 text-cyan-400" />;
-      case 'Users': return <Users className="w-6 h-6 text-emerald-400" />;
-      case 'LockOpen': return <LockOpen className="w-6 h-6 text-indigo-400" />;
-      case 'Database': return <Database className="w-6 h-6 text-pink-400" />;
-      default: return <Sparkles className="w-6 h-6 text-purple-400" />;
-    }
+  const iconMap: Record<string, React.FC<{ className?: string }>> = {
+    Zap: Zap,
+    Award: Award,
+    FolderCheck: FolderCheck,
+    UserCheck: UserCheck,
+    Users: Users,
+    Sparkles: Sparkles
   };
 
   return (
-    <section id="why-us" className="py-20 sm:py-28 bg-white relative overflow-hidden text-slate-900">
-      {/* Background glow */}
-      <div className="absolute top-1/3 right-0 w-80 h-80 bg-cyan-100/60 rounded-full blur-[120px] pointer-events-none" />
+    <section id="benefits" className="py-20 bg-white relative overflow-hidden">
+      {/* Decorative subtle ambient lights */}
+      <div className="absolute -top-10 left-1/4 w-72 h-72 bg-indigo-100/60 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-10 right-1/4 w-80 h-80 bg-purple-100/60 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-200 text-amber-800 text-xs font-semibold uppercase tracking-wider">
-            <Award className="w-3.5 h-3.5 text-amber-600" />
-            <span>{t('whyUsBadge')}</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Nega Aynan Bizning Kurs?</span>
           </div>
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900">
-            {t('whyUsTitle')}
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Nega Yuzlab O'quvchilar Aynan Asom Designer Kursini Tanlamoqda?
           </h2>
-          <p className="text-slate-600 text-base">
-            {t('whyUsSub')}
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Shunchaki nazariya emas, balki real daromad va amaliy natijaga yo'naltirilgan o'quv tizimi.
           </p>
         </div>
 
-        {/* 6 Grid Advantages */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {ADVANTAGES.map((item, idx) => (
-            <div
-              key={idx}
-              className="glass-card p-6 rounded-3xl border border-indigo-100 bg-slate-50/80 hover:bg-white hover:border-purple-300 transition-all duration-300 space-y-4 group shadow-xs hover:shadow-md"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-white border border-indigo-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xs">
-                {renderAdvIcon(item.icon)}
+        {/* Benefits Grid */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {BENEFITS.map((item) => {
+            const IconComponent = iconMap[item.iconName] || Sparkles;
+
+            return (
+              <div
+                key={item.id}
+                className="glass-card p-6 sm:p-7 rounded-2xl border border-slate-200/80 hover:border-indigo-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden"
+              >
+                {/* Highlight Badge */}
+                <div className="inline-block mb-4 px-2.5 py-1 rounded-md bg-indigo-50 border border-indigo-100 text-indigo-700 text-[11px] font-bold">
+                  {item.highlight}
+                </div>
+
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold mb-4 shadow-md shadow-indigo-500/20 group-hover:scale-110 transition-transform">
+                  <IconComponent className="w-6 h-6" />
+                </div>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
-              <h3 className="font-heading font-bold text-xl text-slate-900 group-hover:text-purple-700 transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {item.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Certificate & Prompt Vault Feature Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8">
-          
-          {/* Certificate Feature Card */}
-          <div className="glass-card p-8 rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-50/60 via-indigo-50/50 to-white space-y-6 relative overflow-hidden shadow-sm">
-            <div className="space-y-2">
-              <span className="text-xs font-bold uppercase text-purple-700 bg-purple-100 px-3 py-1 rounded-full border border-purple-200">
-                Rasmiy Hujjat
-              </span>
-              <h3 className="font-heading font-bold text-2xl text-slate-900">
-                Xalqaro Shtrix-kodli Sertifikat
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Kursni muvaffaqiyatli bitirganingizda, ish beruvchilar va mijozlarga taqdim etishingiz mumkin bo'lgan rasmiy tekshiriluvchi sertifikatga ega bo'lasiz.
-              </p>
-            </div>
-
-            {/* Visual Certificate Mockup */}
-            <div className="p-6 rounded-2xl bg-white border border-amber-200 space-y-4 relative shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div className="flex items-center gap-2">
-                  <Award className="w-6 h-6 text-amber-500" />
-                  <span className="font-heading font-bold text-slate-900 text-sm">CERTIFICATE OF COMPLETION</span>
-                </div>
-                <span className="text-[10px] text-amber-800 font-mono bg-amber-100 px-2 py-0.5 rounded font-bold">
-                  VERIFIED #AI-2026-8942
-                </span>
-              </div>
-              <p className="text-xs text-slate-600">
-                Ushbu sertifikat egasi <b>"AI Grafik Dizayn va Prompt Engineering"</b> professional kursini muvaffaqiyatli tamomlaganini tasdiqlaydi.
-              </p>
-              <div className="flex items-center justify-between pt-2 text-[10px] text-slate-500 font-medium">
-                <span>Mentor: Asom Designer</span>
-                <span>Shtrix-kod: ||||| | |||| |||</span>
-              </div>
-            </div>
+        {/* Bonus Callout Box */}
+        <div className="mt-16 bg-gradient-to-r from-indigo-900 via-slate-900 to-purple-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 max-w-2xl text-center lg:text-left">
+            <span className="px-3 py-1 rounded-full bg-amber-400 text-slate-900 text-xs font-black uppercase">
+              Eksklyuziv Bonus
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-extrabold">
+              1000+ Tijorat AI Promptlar Baza Shabloni Tekin Sovg'a!
+            </h3>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Kursga yozilgan har bir ishtirokchiga Asom Designer tomonidan 3 yil davomida yig'ilgan va sinovdan o'tgan logotip, 3D, brending va foto-realistik promptlar to'plami bepul taqdim etiladi.
+            </p>
           </div>
 
-          {/* Prompt Vault Feature Card */}
-          <div className="glass-card p-8 rounded-3xl border border-cyan-200 bg-gradient-to-br from-cyan-50/60 via-blue-50/50 to-white space-y-6 relative overflow-hidden shadow-sm">
-            <div className="space-y-2">
-              <span className="text-xs font-bold uppercase text-cyan-800 bg-cyan-100 px-3 py-1 rounded-full border border-cyan-200">
-                Exclusive Bonus
-              </span>
-              <h3 className="font-heading font-bold text-2xl text-slate-900">
-                500+ Mualliflik Promptlar Bazasi
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Sinovdan o'tgan, tayyor kopiya qilish va ishlatish mumkin bo'lgan professional promptlar xazinasi.
-              </p>
-            </div>
-
-            {/* Prompt Examples List */}
-            <div className="space-y-2.5 text-xs font-mono">
-              <div className="p-3 rounded-xl bg-white border border-purple-200 text-purple-900 shadow-2xs">
-                🔥 <b>Logotiplar:</b> "Futuristic 3D neon logo, minimalist mascot emblem --ar 1:1"
-              </div>
-              <div className="p-3 rounded-xl bg-white border border-cyan-200 text-cyan-900 shadow-2xs">
-                📸 <b>Fotorealizm:</b> "Luxury advertisement photoshoot, cinematic lighting, 8k --v 6.0"
-              </div>
-              <div className="p-3 rounded-xl bg-white border border-emerald-200 text-emerald-900 shadow-2xs">
-                📱 <b>SMM Bannerlar:</b> "Commercial product photography, studio light --ar 4:3"
-              </div>
-            </div>
+          <div className="shrink-0 bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/20 text-center space-y-2 max-w-xs">
+            <p className="text-xs text-amber-300 font-mono uppercase font-bold">Qiymati: 1,200,000 so'm</p>
+            <p className="text-xl font-extrabold text-white">Siz uchun 0 so'm (BEPUL)</p>
+            <p className="text-[11px] text-slate-300">Faqat ushbu guruh o'quvchilari uchun</p>
           </div>
-
         </div>
 
       </div>
     </section>
   );
 };
-

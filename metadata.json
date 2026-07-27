@@ -1,8 +1,6 @@
 {
-  "name": "Ai Designer",
-  "description": "A retro-inspired virtual closet and try-on experience with weather-based style tips.",
+  "name": "Grafik Dizayn AI Kurslari",
+  "description": "Grafik dizayn va Sun'iy Intellekt (Midjourney, Adobe Firefly, Canva AI) bo'yicha professional zamonaviy onlayn kurs landing sahifasi",
   "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

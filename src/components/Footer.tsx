@@ -1,154 +1,101 @@
 import React from 'react';
-import { Sparkles, Send, Instagram, Youtube, Globe, ArrowUpRight, Heart, ShieldCheck } from 'lucide-react';
-import { GOOGLE_FORM_URL } from '../constants';
-import { useLanguage } from '../context/LanguageContext';
+import { CONSTANTS } from '../types';
+import { Sparkles, Phone, Send, Instagram, ArrowUpRight, Heart } from 'lucide-react';
 
 interface FooterProps {
-  onOpenAdmin?: () => void;
+  onOpenRegister: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
-  const { t } = useLanguage();
-
+export const Footer: React.FC<FooterProps> = ({ onOpenRegister }) => {
   return (
-    <footer className="bg-slate-900 border-t border-slate-800 pt-16 pb-8 text-slate-400 text-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <footer className="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
           
-          {/* Brand Info (2 Cols) */}
-          <div className="lg:col-span-2 space-y-4">
+          {/* Brand Info */}
+          <div className="md:col-span-5 space-y-4">
             <a href="#" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 p-0.5">
-                <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-purple-400" />
-                </div>
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+                <Sparkles className="w-5 h-5" />
               </div>
-              <span className="font-heading font-bold text-xl text-white">
-                AI DESIGN <span className="text-purple-400 text-xs font-mono">PRO</span>
-              </span>
+              <div className="font-heading font-extrabold text-xl text-white tracking-tight">
+                ASOM <span className="text-indigo-400">AI DESIGN</span>
+              </div>
             </a>
 
-            <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              {t('footerBrandDesc')}
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              Grafik dizayn va Sun'iy Intellekt (Midjourney, Adobe Firefly, Canva AI) yo'nalishidagi eng so'nggi va amaliy onlayn kurs. 
+              Kelajak kasbini Asom Designer bilan birga egallang.
             </p>
 
-            {/* Social Icons */}
-            <div className="flex items-center gap-3 pt-2">
-              <a
-                href="https://t.me/asom_uz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-300 flex items-center justify-center transition-colors border border-slate-700"
-                aria-label="Telegram"
-              >
-                <Send className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com/asom.designer"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-pink-600 hover:text-white text-slate-300 flex items-center justify-center transition-colors border border-slate-700"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.youtube.com/@Asom.teacher"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 hover:text-white text-slate-300 flex items-center justify-center transition-colors border border-slate-700"
-                aria-label="YouTube (@Asom.teacher)"
-              >
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a
-                href="https://behance.net"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-300 flex items-center justify-center transition-colors border border-slate-700"
-                aria-label="Behance"
-              >
-                <Globe className="w-4 h-4" />
-              </a>
+            {/* Contacts list */}
+            <div className="space-y-2 text-xs pt-1">
+              <p className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                <a href={CONSTANTS.PHONE_TEL} className="text-white hover:text-indigo-400 font-semibold">{CONSTANTS.PHONE}</a>
+              </p>
+              <p className="flex items-center gap-2">
+                <Send className="w-3.5 h-3.5 text-sky-400" />
+                <a href={CONSTANTS.TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-white hover:text-sky-400 font-semibold">Telegram: {CONSTANTS.TELEGRAM_HANDLE}</a>
+              </p>
+              <p className="flex items-center gap-2">
+                <Instagram className="w-3.5 h-3.5 text-pink-400" />
+                <a href={CONSTANTS.INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-400 font-semibold">Instagram: {CONSTANTS.INSTAGRAM_HANDLE}</a>
+              </p>
             </div>
           </div>
 
-          {/* Quick Links Column */}
-          <div className="space-y-3">
-            <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
-              {t('footerColSections')}
-            </h4>
+          {/* Quick Nav Links */}
+          <div className="md:col-span-3 space-y-3">
+            <p className="text-xs font-bold text-white uppercase tracking-wider">Menyular</p>
             <ul className="space-y-2 text-xs">
-              <li><a href="#about" className="hover:text-purple-400 transition-colors">{t('navAbout')}</a></li>
-              <li><a href="#modules" className="hover:text-purple-400 transition-colors">{t('navProgram')}</a></li>
-              <li><a href="#why-us" className="hover:text-purple-400 transition-colors">{t('navBenefits')}</a></li>
-              <li><a href="#mentor" className="hover:text-purple-400 transition-colors">{t('navMentor')}</a></li>
-              <li><a href="#gallery" className="hover:text-purple-400 transition-colors">{t('navGallery')}</a></li>
+              <li><a href="#about" className="hover:text-white transition-colors">Kurs haqida</a></li>
+              <li><a href="#program" className="hover:text-white transition-colors">Dastur va Modullar</a></li>
+              <li><a href="#benefits" className="hover:text-white transition-colors">Nega aynan biz?</a></li>
+              <li><a href="#mentor" className="hover:text-white transition-colors">Mentor haqida</a></li>
+              <li><a href="#results" className="hover:text-white transition-colors">Talabalar ishlari</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">Tariflar va Narxlar</a></li>
+              <li><a href="#faq" className="hover:text-white transition-colors">Ko'p beriladigan savollar</a></li>
             </ul>
           </div>
 
-          {/* Tariflar & Registration */}
-          <div className="space-y-3">
-            <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
-              {t('footerColRegistration')}
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanStart')}</a></li>
-              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanPro')}</a></li>
-              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">{t('pricingPlanVip')}</a></li>
-              <li>
-                <a
-                  href={GOOGLE_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-400 font-semibold hover:underline flex items-center gap-1 mt-1"
-                >
-                  <span>Google Form</span>
-                  <ArrowUpRight className="w-3 h-3" />
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Registration CTA Column */}
+          <div className="md:col-span-4 space-y-4">
+            <p className="text-xs font-bold text-white uppercase tracking-wider">Qabul Ochiq</p>
+            <p className="text-xs text-slate-400">
+              Chegirmali guruhga ro'yxatdan o'tish uchun tugmani bosing va arizangizni qoldiring:
+            </p>
 
-          {/* Contact Info */}
-          <div className="space-y-3">
-            <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider">
-              {t('footerColContact')}
-            </h4>
-            <div className="space-y-2 text-xs text-slate-400">
-              <p>📍 Toshkent shahri, IT-Park</p>
-              <p>📞 +998 (99) 807-62-75</p>
-              <p>✉️ @asom_uz (Telegram)</p>
-              <p>🕒 {t('footerWorkHours')}</p>
-            </div>
+            <button
+              onClick={onOpenRegister}
+              className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-xs py-3.5 rounded-xl transition-all shadow-lg cursor-pointer"
+            >
+              <span>Ro'yxatdan O'tish</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+
+            <a
+              href={CONSTANTS.GOOGLE_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center text-[11px] text-indigo-400 hover:underline"
+            >
+              Google Forms havolasi ↗
+            </a>
           </div>
 
         </div>
 
         {/* Bottom Copyright */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
-          <p>© {new Date().getFullYear()} AI DESIGN PRO. {t('footerRights')}</p>
-          
-          <div className="flex items-center gap-4">
-            {onOpenAdmin && (
-              <button
-                onClick={onOpenAdmin}
-                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-purple-400 hover:text-purple-300 font-medium text-xs flex items-center gap-1.5 border border-slate-700 transition-all"
-              >
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Boshqaruv Paneli (Arizalar)</span>
-              </button>
-            )}
-            <p className="flex items-center gap-1">
-              <span>{t('footerMadeWith')}</span> <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-            </p>
-          </div>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 text-center sm:text-left">
+          <p>© {new Date().getFullYear()} Asom Designer. Barcha huquqlar himoyalangan.</p>
+          <p className="flex items-center justify-center gap-1">
+            <span>Grafik Dizayn va Sun'iy Intellekt Kursi</span>
+          </p>
         </div>
 
       </div>
     </footer>
   );
 };
-

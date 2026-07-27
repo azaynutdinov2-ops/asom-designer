@@ -1,94 +1,76 @@
 import React, { useState } from 'react';
-import { Header } from './components/Header';
+import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutCourse } from './components/AboutCourse';
-import { Modules } from './components/Modules';
+import { Curriculum } from './components/Curriculum';
 import { WhyUs } from './components/WhyUs';
-import { Mentor } from './components/Mentor';
-import { Gallery } from './components/Gallery';
-import { InteractivePlayground } from './components/InteractivePlayground';
-import { Pricing } from './components/Pricing';
-import { FAQ } from './components/FAQ';
-import { RegistrationCTA } from './components/RegistrationCTA';
+import { MentorSection } from './components/MentorSection';
+import { StudentWorks } from './components/StudentWorks';
+import { AiPromptSimulator } from './components/AiPromptSimulator';
+import { RoiCalculator } from './components/RoiCalculator';
+import { PricingSection } from './components/PricingSection';
+import { FaqSection } from './components/FaqSection';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { LightboxModal } from './components/LightboxModal';
-import { AdminLeadsModal } from './components/AdminLeadsModal';
-import { GOOGLE_FORM_URL } from './constants';
-import { StudentWork } from './types';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { RegisterModal } from './components/RegisterModal';
 
-export function App() {
-  const [selectedWork, setSelectedWork] = useState<StudentWork | null>(null);
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
+export default function App() {
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const handleOpenRegister = () => {
+    setIsRegisterOpen(true);
+  };
+
+  const handleCloseRegister = () => {
+    setIsRegisterOpen(false);
+  };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col font-sans selection:bg-purple-500 selection:text-white">
-      {/* Navbar Header */}
-      <Header />
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-indigo-500 selection:text-white">
+      {/* Top Navbar */}
+      <Navbar onOpenRegister={handleOpenRegister} />
 
-      {/* Main Landing Page Sections */}
-      <main className="flex-grow">
+      {/* Main Sections */}
+      <main>
         {/* 1. Hero Section */}
-        <Hero />
+        <Hero onOpenRegister={handleOpenRegister} />
 
         {/* 2. Kurs haqida */}
-        <AboutCourse />
+        <AboutCourse onOpenRegister={handleOpenRegister} />
+
+        {/* Interactive AI Prompt Simulator */}
+        <AiPromptSimulator />
 
         {/* 3. Dastur / Modullar */}
-        <Modules />
+        <Curriculum onOpenRegister={handleOpenRegister} />
 
         {/* 4. Nega aynan biz */}
         <WhyUs />
 
-        {/* 5. O'qituvchi / Mentor */}
-        <Mentor />
+        {/* 5. Mentor haqida bo'lim */}
+        <MentorSection onOpenRegister={handleOpenRegister} />
 
-        {/* 6. Talabalar ishlari / Natijalar */}
-        <Gallery onOpenLightbox={(work) => setSelectedWork(work)} />
+        {/* 6. Talabalar ishlari / Natijalar (100+ shogirdlar, mentor video, AI video) */}
+        <StudentWorks />
 
-        {/* Interaktiv Playground & ROI Calculator */}
-        <InteractivePlayground />
+        {/* Interactive ROI Calculator */}
+        <RoiCalculator onOpenRegister={handleOpenRegister} />
 
-        {/* 7. Narxlar / Tariflar */}
-        <Pricing />
+        {/* 7. Narxlar / tariflar */}
+        <PricingSection onOpenRegister={handleOpenRegister} />
 
-        {/* 8. FAQ - Ko'p beriladigan savollar */}
-        <FAQ />
+        {/* 8. FAQ */}
+        <FaqSection />
 
         {/* 9. Bog'lanish / Ro'yxatdan o'tish */}
-        <RegistrationCTA />
+        <ContactSection onOpenRegister={handleOpenRegister} />
       </main>
 
       {/* 10. Footer */}
-      <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
+      <Footer onOpenRegister={handleOpenRegister} />
 
-      {/* Lightbox Modal for Artworks */}
-      <LightboxModal
-        work={selectedWork}
-        onClose={() => setSelectedWork(null)}
-      />
-
-      {/* Admin Panel & Leads Database Modal */}
-      <AdminLeadsModal
-        isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
-      />
-
-      {/* Floating Bottom Quick Registration Pill for High Conversion */}
-      <div className="fixed bottom-5 right-5 z-40">
-        <a
-          href={GOOGLE_FORM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-xs sm:text-sm shadow-2xl shadow-purple-600/50 hover:scale-105 transition-all duration-300 border border-purple-400/40 group"
-        >
-          <Sparkles className="w-4 h-4 text-amber-300 animate-spin" style={{ animationDuration: '4s' }} />
-          <span>Ro'yxatdan o'tish</span>
-          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </a>
-      </div>
+      {/* Modal Popup */}
+      <RegisterModal isOpen={isRegisterOpen} onClose={handleCloseRegister} />
     </div>
   );
 }
-
-export default App;
